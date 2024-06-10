@@ -1,0 +1,17 @@
+name: test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: test findstr
+      run: |
+       findstr "Successfully executed:" .\report.txt > .\result-check
+       findstr "100.00%" .\result-check
+
